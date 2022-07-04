@@ -1,30 +1,79 @@
-.countriestable {
+.countrytable_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.countrytable_inner .head {
+    background-color: #0AD6A0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.countrytable_inner .head button {
+    background-color: #0AD6A0;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    width: 25%;
+}
+
+.countrytable_inner .head button:hover {
+    cursor: pointer;
+    color: rgb(240, 240, 240);
+}
+
+.countrytable_inner .content {
+    width: 100%;
+}
+
+.country_row {
+    background-color: rgb(255, 255, 255);
+    margin: 10px 0px;
+    display: flex;
+    box-shadow: 0px 0px 5px 1px rgb(213, 213, 213);
+    border-radius: 30px;
+    padding: 0px 10px;
+}
+
+
+.country_flag {
+    display: flex;
+    align-items: center;
+}
+
+.country_flag img {
+    height: 20px;
+    display: flex;
+    /* background-color: aqua; */
+}
+
+.country_row div {
+    width: 25%;
     display: flex;
     justify-content: center;
 }
 
-.countriestable .innertable {
-    display: flex;
-    border: 1px solid #0AD6A0;
-    border-radius: 20px;
-    overflow: hidden;
+.arrow {
+    border: solid rgb(255, 255, 255);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    position: relative;
+    left: 5px;
 }
 
-.countriestable .innertable .namecol h1 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 500;
-    color: white;
-    background-color: #0AD6A0;
-    padding: 10px 30px;
-    margin: 0px;
-    font-size: 20px;
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
 
-.countriestable .innertable .namecol p {
-    padding: 10px 30px;
-    background-color: rgb(250, 250, 250);
-}
-
-.namebold {
-    font-weight: 600;
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
 }
