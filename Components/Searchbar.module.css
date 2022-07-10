@@ -2,26 +2,29 @@
     display: flex;
     justify-content: center;
     padding: 10px;
+    align-items: center;
 }
 
-.container input {
-    background-color: white;
+.searchbar {
+    width: 500px;
+    max-width: 500px;
+    border: 2px solid grey;
+    display: flex;
+    margin: 10px;
+    padding: 10px;
     border-radius: 20px;
+    align-items: center;
+}
+
+.searchbar input {
+    width: 100%;
+    border: none;
+    padding: 0px 10px;
     font-size: 18px;
-    padding: 5px 10px;
+    outline: none;
 }
 
-.container button {
-    background-color: black;
-    color: white;
-    margin: 0pc 5px;
-    font-size: 15px;
-    border: 1px solid black;
-    font-weight: 600;
-    border-radius: 10px;
 
-}
-
-.container button:hover {
+.searchbar:hover {
     cursor: pointer;
 }

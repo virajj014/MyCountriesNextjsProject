@@ -1,7 +1,15 @@
 import styles from './MyCountries.module.css'
 import { useState } from 'react'
+import Searchcss from './Searchbar.module.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/router';
+
 
 const MyCountries = ({ countries }) => {
+    const [keyword, setkeyword] = useState('');
+    const router = useRouter();
+
     const [mycountry, Setmycountry] = useState(countries);
     const [populationflag, Setpopulationflag] = useState(0);
     const [areaflag, Setareaflag] = useState(0);
@@ -21,7 +29,6 @@ const MyCountries = ({ countries }) => {
             return Setmycountry(data)
         }
     }
-
     const orderbyname = (countries) => {
         Setareaflag(0)
         Setpopulationflag(0)
@@ -36,8 +43,6 @@ const MyCountries = ({ countries }) => {
             return Setmycountry(data)
         }
     }
-
-
     const orderbyarea = (countries) => {
         Setpopulationflag(0)
         Setnameflag(0)
@@ -53,9 +58,23 @@ const MyCountries = ({ countries }) => {
         }
     }
 
+
+    const handleInputchange = (e) => {
+        setkeyword(e.target.value.toLowerCase())
+        Setmycountry(countries.filter(country => country.name.common.toLowerCase().includes(keyword)))
+    }
+
     return (
 
         <div className={styles.countrytable_outer}>
+
+            <div className={Searchcss.container}>
+                <div className={Searchcss.searchbar}>
+                    <FontAwesomeIcon icon={faSearch} />
+                    <input placeholder='Search any Place' onChange={(e) => handleInputchange(e)} />
+                </div>
+            </div>
+
             <div className={styles.countrytable_inner}>
                 <div className={styles.head}>
                     <button onClick={() => orderbyname(countries)}>
@@ -83,14 +102,23 @@ const MyCountries = ({ countries }) => {
                 </div>
 
                 <div className={styles.content}>
-                    {mycountry.map((country) =>
-                        <div className={styles.country_row}>
-                            <div><p>{country.name.common}</p></div>
-                            <div className={styles.country_flag}><img src={country.flags.png} /></div>
-                            <div><p>{country.population}</p></div>
-                            <div><p>{country.area}</p></div>
+                    {mycountry.length == 0 ?
+                        <h1 >Country not found...</h1>
+                        :
+                        <div>
+                            {mycountry.map((country) =>
+                                <div key={country.flags.png} className={styles.country_row} onClick={() => router.push({
+                                    pathname: `/countrypage/${country.ccn3}`
+                                })}>
+                                    <div><p>{country.name.common}</p></div>
+                                    <div className={styles.country_flag}><img src={country.flags.png} /></div>
+                                    <div><p>{country.population}</p></div>
+                                    <div><p>{country.area}</p></div>
+
+                                </div>
+                            )}
                         </div>
-                    )}
+                    }
                 </div>
             </div>
         </div>

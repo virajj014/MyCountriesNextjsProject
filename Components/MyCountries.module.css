@@ -32,6 +32,12 @@
     width: 100%;
 }
 
+.countrytable_inner .content h1 {
+    text-align: center;
+    font-weight: 400;
+    color: #0AD6A0;
+}
+
 .country_row {
     background-color: rgb(255, 255, 255);
     margin: 10px 0px;
@@ -76,4 +82,9 @@
 .up {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
+}
+
+.country_row:hover {
+    cursor: pointer;
+    background-color: #b8feeb;
 }
