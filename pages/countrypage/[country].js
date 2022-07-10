@@ -10,6 +10,7 @@ export const getServerSideProps = async ({ params }) => {
     }
 }
 const country = (data) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const router = useRouter();
 
     console.log(data.data[0])
